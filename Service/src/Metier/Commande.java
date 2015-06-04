@@ -3,15 +3,42 @@ package Metier;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import Data.DAO;
+
+@Entity
+@Table(name="commande")
 public class Commande {
+	
+	@Id
+	@Column(name = "numTable", nullable = false)
 	private int numTable = -1;
+	
+	@Column(name = "numPersonne", nullable = false)
 	private int numPersonne = -1;
+	
+	@Column(name = "paye", nullable = false)
+	private boolean paye = false;
+	
+	@OneToMany(cascade = {CascadeType.ALL}, fetch=FetchType.LAZY)
+    @JoinTable(name="commande_plat", joinColumns={@JoinColumn(name = "nom")})
 	private List<Plat> lstPlats = new ArrayList<Plat>();
 	
 	public void sauvegarder(){
-		//TODO sauvegarder dans la BDD
+		DAO.getInstance().getTX().begin();
 		DAO.getInstance().getEM().persist(this);
+		DAO.getInstance().getTX().commit();	
 	}
+	
 	public void ajouterPlat(Plat plat){
 		getLstPlats().add(plat);
 	}
@@ -42,6 +69,13 @@ public class Commande {
 
 	public void setLstPlats(List<Plat> lstPlats) {
 		this.lstPlats = lstPlats;
+	}
+	
+	public boolean isPaye() {
+		return paye;
+	}
+	public void setPaye(boolean paye) {
+		this.paye = paye;
 	}
 	
 	/**
