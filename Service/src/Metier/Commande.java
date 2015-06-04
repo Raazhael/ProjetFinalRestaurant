@@ -10,6 +10,7 @@ public class Commande {
 	
 	public void sauvegarder(){
 		//TODO sauvegarder dans la BDD
+		DAO.getInstance().getEM().persist(this);
 	}
 	public void ajouterPlat(Plat plat){
 		getLstPlats().add(plat);

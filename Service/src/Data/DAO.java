@@ -1,7 +1,5 @@
 package Data;
 
-package data;
-
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -9,7 +7,6 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
-import metier.Formation;
 
 
 public class DAO {
@@ -82,6 +79,7 @@ public class DAO {
 		}
 	}
 	
+	/*
 	public void selectAllFormations(){
 		System.out.println("---------------------------------------------------------");
 		System.out.println("Voici les formation existantes");
@@ -117,5 +115,5 @@ public class DAO {
 		DAO.getInstance().getEM().persist(o);
 		DAO.getInstance().getTX().commit();
 	}
-	
+	*/
 }
