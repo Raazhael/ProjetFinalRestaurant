@@ -42,3 +42,6 @@ Network Trash Folder
 Temporary Items
 .apdisk
 UML/diagramme 4.jpg
+
+.metadata/**
+.metadata/.log
