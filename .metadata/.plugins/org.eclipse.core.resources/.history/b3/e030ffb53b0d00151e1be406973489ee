@@ -1,0 +1,27 @@
+package Actions;
+
+import com.opensymphony.xwork2.ActionSupport;
+
+public class Action1 extends ActionSupport {
+	private String name;
+
+	public String execute() throws Exception {
+		System.out.println("on execute");
+		if(name=="mathieu"){
+			setName("jean-victor");
+			System.out.println("jean-victor");
+		}else{
+			System.out.println("michel");
+			setName("michel");
+		}
+		return "success";
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+}

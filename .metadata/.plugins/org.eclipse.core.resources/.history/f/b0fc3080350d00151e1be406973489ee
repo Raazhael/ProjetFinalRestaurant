@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="default" namespace="/" extends="struts-default">
+		<default-action-ref name="index" />
+		<action name="index">
+			<result type="redirectAction">
+				<param name="actionName">num</param>
+				<param name="namespace">/actions</param>
+			</result>
+		</action>
+	</package>
+	<package name="actions" namespace="/actions" extends="struts-default">
+		<action name="num">
+			<result name="success">/vues/score.jsp</result>
+		</action>
+		<action name="plusJ1" class="actions.ActionScore" method="plusJ1">
+			<result name="equal">/vues/score.jsp</result>
+		</action>
+		<action name="checknum" class="actions.ActionScore" method="plusJ2">
+			<result name="over">/vues/score.jsp</result>
+			<result name="under">/vues/score.jsp</result>
+			<result name="equal">/vues/score.jsp</result>
+		</action>
+	</package>
+
+</struts>
+
